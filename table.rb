@@ -33,6 +33,16 @@ class Table
   rescue PG::Error => e
     puts e.message
   end
+
+  def insert_from_csv(csv_filename, columns)
+    CSV.foreach("csv_files/#{csv_filename}", headers:true) do |row|
+      connection.exec("INSERT INTO #{table_name}(#{columns.join(',')}) VALUES (#{row.map{|item| "'#{item.at(1)}'" }.join(',')})")
+    end
+    puts "Inserted data from CSV file into #{table_name}."
+  rescue PG::Error => e
+    puts e.message
+  end
+
 end
 
 

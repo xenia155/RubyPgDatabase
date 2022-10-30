@@ -1,0 +1,9 @@
+picture_url, picture_alt_text, picture_type, users_pictures_id
+url1,alt_text1,1,1
+url2,alt_text2,2,1
+url3,alt_text3,1,1
+url4,alt_text4,1,2
+url5,alt_text5,2,2
+url6,alt_text6,2,3
+url7,alt_text7,2,4
+url8,alt_text8,1,4

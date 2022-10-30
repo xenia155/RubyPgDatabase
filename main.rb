@@ -12,14 +12,17 @@ conn = PG.connect(
 table1 = Table.new("schema1.users", conn)
 table1.create_table
 table1.clear_data
+table1.insert_from_csv("schema1.users.csv", %w[user_id email nickname])
 
 table2 = Table.new("schema1.users_additional_info", conn)
 table2.create_table
 table2.clear_data
+table2.insert_from_csv("schema1.users_additional_info.csv", %w[first_name last_name birthdate sex users_additional_info_id])
 
 table3 = Table.new("schema1.users_pictures", conn)
 table3.create_table
 table3.clear_data
+table3.insert_from_csv("schema1.users_pictures.csv", %w[picture_url picture_alt_text picture_type users_pictures_id])
 
 def out_all_info(conn)
   conn.exec("SELECT u.user_id, u.email, u.nickname, uad.first_name, uad.last_name, uad.birthdate, uad.sex
